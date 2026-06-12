@@ -1,0 +1,26 @@
+ORG 32500
+
+    LD A,(32537)
+    SUB 48
+    CP 10
+    JR C,highnum
+    SUB 7
+highnum:
+    SLA A
+    SLA A
+    SLA A
+    SLA A
+    LD C,A
+    LD A,(32536)
+    SUB 48
+    CP 10
+    JR C, lownum
+    SUB 7
+lownum:
+    ADD A,C
+    LD B,0
+    LD C,A
+    RET
+
+DB '1' ; address 32536 - low digit
+DB 'F' ; address 32537 - high digit (sample data is $F1)

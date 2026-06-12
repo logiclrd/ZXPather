@@ -1,0 +1,32 @@
+7EF4                          .ORG   32500   
+7EF4                             ; 
+7EF4   3A 19 7F               LD   A,(32537)   
+7EF7   D6 30                  SUB   48   
+7EF9   FE 0A                  CP   10   
+7EFB   38 02                  JR   C,highnum   
+7EFD   D6 07                  SUB   7   
+7EFF                HIGHNUM:      
+7EFF   CB 27                  SLA   A   
+7F01   CB 27                  SLA   A   
+7F03   CB 27                  SLA   A   
+7F05   CB 27                  SLA   A   
+7F07   4F                     LD   C,A   
+7F08   3A 18 7F               LD   A,(32536)   
+7F0B   D6 30                  SUB   48   
+7F0D   FE 0A                  CP   10   
+7F0F   38 02                  JR   C,lownum   
+7F11   D6 07                  SUB   7   
+7F13                LOWNUM:      
+7F13   81                     ADD   A,C   
+7F14   06 00                  LD   B,0   
+7F16   4F                     LD   C,A   
+7F17   C9                     RET      
+7F18                             ; 
+7F18   31                     DB   "1"   ; address 32536 - low digit
+7F19   46                     DB   "F"   ; address 32537 - high digit (sample data is $F1)
+
+
+HIGHNUM:            7EFF DEFINED AT LINE 8
+                    > USED AT LINE 6
+LOWNUM:             7F13 DEFINED AT LINE 19
+                    > USED AT LINE 17
