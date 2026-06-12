@@ -1,0 +1,23 @@
+0 REM template for drawing hex strings -- insert your hex string below and GO SUB 20, repeat as desired
+1 BORDER 5:INK 5:PAPER 1:CLS
+2 LET a$="80577554704F70477A49814F81577A52754D724A"
+3 REM LET a$=a$+"F6D5...." -- for longer strings, repeat as needed
+4 GO SUB 20
+5 REM another? here, have a Sicily
+6 LET a$="7388718870866F876D896D8A6C8B6D8D6E8E6F8F728F73907590769278937A947D967F9681968298839A859B869B889B8A9C8A9B8A9A8C978D978C958B948C938A938A918A8F8B8E8C8C8D8A8F8690858F858D868C858B868A8788868687858"
+7 LET a$=a$+"881897E897C897A897988778777867586748673887388"
+8 GO SUB 20
+18 STOP
+19 REM GO SUB 20: draw connected lines described by a$
+20 LET h$=a$(1):LET l$=a$(2):GO SUB 60:LET m=v
+21 LET h$=a$(3):LET l$=a$(4):GO SUB 60:LET n=v
+22 PLOT m,175-n
+23 FOR i=5 TO LEN a$ STEP 4
+24 LET h$=a$(i+0):LET l$=a$(i+1):GO SUB 60:LET q=v
+25 LET h$=a$(i+2):LET l$=a$(i+3):GO SUB 60:LET w=v
+26 DRAW q-m,n-w:LET m=q:LET n=w
+27 NEXT i:RETURN
+39 REM GO SUB 40: parse hex digit in h$ into v
+40 LET v=CODE h$-CODE "0"-(7 AND h$>"9"):RETURN
+59 REM GO SUB 60: parse hex byte in h$ and l$ into v (clobbers u)
+60 GO SUB 40:LET u=16*v:LET h$=l$:GO SUB 40:LET v=u+v:RETURN
