@@ -20,7 +20,7 @@ When you have finished your drawing, press Enter, and the generated hex sequence
 
 When the cursor gets close to the path, part of the path gets highlighted too.
 
-![Pather UI - artefact](pather-1.png)
+![Pather UI - artefact](pather-3.png)
 
 This is because the ZX Spectrum doesn't store colour information for every pixel on the screen. Colour is only stored for 8x8 blocks. So, if a given 8x8 block contains the teal cursor, then the entire 8x8 block turns teal. If you're a ZX Spectrum enthusiast, perhaps you already knew this. :-)
 
