@@ -50,7 +50,7 @@ As shown in the template, you can also draw multiple paths by calling routine 20
 
 There's also a file called `faster.bas` that is the same as `template.bas` except the rendering routine uses a machine code subroutine to parse the hex digits. The initialization of the machine code routine is a bit of a hit on startup (~800ms in a test I ran), but the subsequent rendering is well over twice as fast. :-)
 
-<video src="pather-faster-head-to-head.mp4" width="640" height="360" controls alt="Head to Head Video"></video>
+https://github.com/user-attachments/assets/759c5f44-5c35-40b8-be8f-36fa7b679eec
 
 > _These don't look like synchronized runs, but they're actually off by just 1 frame!_
 
