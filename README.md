@@ -45,3 +45,14 @@ code that assigns it to string variable `A$`:
 Insert this into a new file based on `template.bas` followed by `GO SUB 20`.
 
 As shown in the template, you can also draw multiple paths by calling routine 20 more than once.
+
+## Faster
+
+There's also a file called `faster.bas` that is the same as `template.bas` except the rendering routine uses a machine code subroutine to parse the hex digits. The initialization of the machine code routine is a bit of a hit on startup (~800ms in a test I ran), but the subsequent rendering is well over twice as fast. :-)
+
+![Head to Head Video](pather-faster-head-to-head.mp4)
+
+> _These don't look like synchronized runs, but they're actually off by just 1 frame!_
+
+The assembler routine's source code is in `faster.z80`, and `faster.lst` is an assembler listing that includes opcode bytes. The bytes were transformed in a straightforward manner to the `DATA` statement on
+line 70 of `faster.bas`.
