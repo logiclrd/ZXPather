@@ -1,6 +1,6 @@
 0 REM INITIALISE POSITION
 1 LET x=128:LET y=88
-2 LET a$=""
+2 LET b$=""
 3 BORDER 4:PAPER 0:CLS:INK 5:PLOT x,y
 9 REM KEYBOARD LOOP
 10 LET k$=INKEY$
@@ -23,21 +23,23 @@
 31 PRINT "Here's your hex:"
 32 PRINT
 33 INK 6
-34 PRINT a$
+34 PRINT b$
 35 STOP
-39 REM GO SUB 40 - output a hex byte in n to a$, clobbers m
+39 REM GO SUB 40 - output a hex byte in n to b$, clobbers m
 40 LET m=INT(n/16):GO SUB 50
 41 LET m=n-16*m:GO SUB 50
 42 RETURN
-49 REM GO SUB 50 - output a hex digit in m to a$, does nothing if m is not 0..15
-50 IF m>=0 AND m<=9 THEN LET a$=a$+CHR$ (m+48)
-51 IF m>=10 AND m<=15 THEN LET a$=a$+CHR$ (m+55)
+49 REM GO SUB 50 - output a hex digit in m to b$, does nothing if m is not 0..15
+50 IF m>=0 AND m<=9 THEN LET b$=b$+CHR$ (m+48)
+51 IF m>=10 AND m<=15 THEN LET b$=b$+CHR$ (m+55)
 52 RETURN
-59 REM GO SUB 60 - append the current x,y point to a$ in hex, redraw
+59 REM GO SUB 60 - append the current x,y point to b$ in hex, draw the new segment
 60 LET n=x:GO SUB 40
 61 LET n=175-y:GO SUB 40
-62 CLS:INK 1:GO SUB 70
-63 RETURN
+62 IF LEN(b$)<=4 THEN LET a$=b$
+63 IF LEN(b$)>4 THEN LET a$=b$(LEN b$-7 TO)
+64 INK 1:GO SUB 70
+65 RETURN
 69 REM GO SUB 70 - draw connected lines described by a$, clobbers h$, l$, m, n and v
 70 LET h$=a$(1):LET l$=a$(2):GO SUB 80:LET m=v
 71 LET h$=a$(3):LET l$=a$(4):GO SUB 80:LET n=v
