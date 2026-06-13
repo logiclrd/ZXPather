@@ -1,36 +1,36 @@
 7EF4                          .ORG   32500   
 7EF4                             ; 
-7EF4   3A 19 7F               LD   A,(arg+1)   
+7EF4   3A 15 7F               LD   A,(arg+1)   
 7EF7   D6 30                  SUB   48   
 7EF9   FE 0A                  CP   10   
 7EFB   38 02                  JR   C,highnum   
 7EFD   D6 07                  SUB   7   
 7EFF                HIGHNUM:      
-7EFF   CB 27                  SLA   A   
-7F01   CB 27                  SLA   A   
-7F03   CB 27                  SLA   A   
-7F05   CB 27                  SLA   A   
-7F07   4F                     LD   C,A   
-7F08   3A 18 7F               LD   A,(arg)   
-7F0B   D6 30                  SUB   48   
-7F0D   FE 0A                  CP   10   
-7F0F   38 02                  JR   C,lownum   
-7F11   D6 07                  SUB   7   
-7F13                LOWNUM:      
-7F13   81                     ADD   A,C   
-7F14   06 00                  LD   B,0   
-7F16   4F                     LD   C,A   
-7F17   C9                     RET      
-7F18                             ; 
-7F18                ARG:         
-7F18   31                     DB   "1"   ; low digit
-7F19   46                     DB   "F"   ; high digit (sample data is $F1)
+7EFF   87                     ADD   A,A   
+7F00   87                     ADD   A,A   
+7F01   87                     ADD   A,A   
+7F02   87                     ADD   A,A   
+7F03   4F                     LD   C,A   
+7F04   3A 14 7F               LD   A,(arg)   
+7F07   D6 30                  SUB   48   
+7F09   FE 0A                  CP   10   
+7F0B   38 02                  JR   C,lownum   
+7F0D   D6 07                  SUB   7   
+7F0F                LOWNUM:      
+7F0F   81                     ADD   A,C   
+7F10   06 00                  LD   B,0   
+7F12   4F                     LD   C,A   
+7F13   C9                     RET      
+7F14                             ; 
+7F14                ARG:         
+7F14   31                     DB   "1"   ; low digit
+7F15   46                     DB   "F"   ; high digit (sample data is $F1)
 
 
 HIGHNUM:            7EFF DEFINED AT LINE 8
                     > USED AT LINE 6
-LOWNUM:             7F13 DEFINED AT LINE 19
+LOWNUM:             7F0F DEFINED AT LINE 19
                     > USED AT LINE 17
-ARG:                7F18 DEFINED AT LINE 25
+ARG:                7F14 DEFINED AT LINE 25
                     > USED AT LINE 3
                     > USED AT LINE 14

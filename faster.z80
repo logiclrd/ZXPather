@@ -6,10 +6,10 @@ ORG 32500
     JR C,highnum
     SUB 7
 highnum:
-    SLA A
-    SLA A
-    SLA A
-    SLA A
+    ADD A,A
+    ADD A,A
+    ADD A,A
+    ADD A,A
     LD C,A
     LD A,(arg)
     SUB 48
